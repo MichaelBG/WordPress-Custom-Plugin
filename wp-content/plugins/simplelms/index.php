@@ -55,15 +55,61 @@ function CF_Courses_Main(){
 }
 
 function CF_Courses(){
-    ?>
 
-    <div>
-        <h3> 
-        Course Price
-        </h3>
-        <input type="text">
-   </div>
+	wp_head();
+    ?>
+		<div class="BG-Blue-1">
+			<br>
+			<div class="BG-Blue-2 col-90 MA center BR">
+				<p> Subtitle</p>
+				<input type="text" name="" class="col-90">
+				<br><br>
+		</div>
+		<br>
+		</div>
+
+		<div class="BG-Blue-1">
+			<br>
+			<div class="BG-Blue-2 col-90 MA center BR">
+				<p> Price </p>
+				<input type="text" name="" class="col-90">
+				<br><br>
+		</div>
+		<br>
+		</div>
+
+		<div class="BG-Blue-1">
+			<br>
+			<div class="BG-Blue-2 col-90 MA center BR">
+				<p> Video Trailer </p>
+				<input type="text" name="" class="col-90">
+				<br><br>
+		</div>
+		<br>
+		</div>
+
+		<div class="BG-Blue-1">
+			<br>
+			<div class="BG-Blue-2 col-90 MA center BR">
+				<p> Curriculum </p>
+				<input type="text" name="" class="col-90">
+				<br><br>
+		</div>
+		<br>
+		</div>
+
+
+
     <?php
 }
 
 add_action('admin_init', 'CF_Courses_Main');
+
+/* Include CSS file */
+
+function add_style(){
+    wp_register_style('style', plugin_dir_url(__FILE__).'assets/style.css');
+    wp_enqueue_style('style', plugin_dir_url(__FILE__).'assets/style.css');
+}
+
+add_action('wp_enqueue_scripts','add_style');
