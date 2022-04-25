@@ -113,3 +113,16 @@ function add_style(){
 }
 
 add_action('wp_enqueue_scripts','add_style');
+
+/* Load Course Template */
+
+function template_courses($template){
+global $post;
+if('courses'===$post -> post_type && locate_template(array('template-courses')) !== $template){
+	return plugin_dir_path(__FILE__).'templates/template-courses.php';
+}
+return $template;
+
+}
+
+add_filter('single_template', 'template_courses');
