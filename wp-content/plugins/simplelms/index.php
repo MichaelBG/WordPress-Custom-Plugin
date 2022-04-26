@@ -125,4 +125,31 @@ return $template;
 
 }
 
+/* Filter the single_template with the custom function
+*/
+
 add_filter('single_template', 'template_courses');
+
+
+/* Create a Database Table - Course Details */ 
+function database_table(){
+	global $wpdb;
+	$database_table_name = $wpdb->prefix."lms_course_details";
+	$charset = $wpdb->get_charset_collate;
+	$course_det = "CREATE TABLE $database_table_name (
+		ID 			int(9) not null,
+		title 		text(100) not null,
+		subtitle	text(500) not null,
+		video 		varchar(100) not null,
+		price 		int(9) not null,
+		thumbnail 	text not null,
+		content 	text not null,
+		primary key(ID)
+	) $charset; ";
+
+	require_once(ABSPATH.'wp-admin/includes/upgrade.php');
+	dbDelta($course_det);
+
+}
+
+register_activation_hook(__FILE__,'database_table');
